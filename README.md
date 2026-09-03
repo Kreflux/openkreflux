@@ -4,7 +4,7 @@
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/downloads/)
 [![Version](https://img.shields.io/badge/version-0.1.0-green.svg)](https://github.com/Kreflux/openkreflux)
 
-**OpenKreflux** is the core open-source Python research & inference toolkit powering **[Kreflux](https://kreflux.ai)**.
+**OpenKreflux** is the core open-source Python research & inference toolkit powering **[Kreflux](https://kreflux.com)**.
 
 It provides a production-grade, fault-tolerant inference engine featuring **Kreflux's Resilient Multi-Provider Router** (Featherless, Neokens, OpenRouter) with dropped-stream failover resumption, an automated **Reasoning Trace Verifier**, **Reasoning Ladder Scoring** (Low → Ultra), and an **Inference Benchmarking Suite**.
 
