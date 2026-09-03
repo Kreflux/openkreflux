@@ -24,7 +24,7 @@ from rich.text import Text
 
 from openkreflux import __version__
 from openkreflux.benchmark import InferenceBenchmark
-from openkreflux.router import FlukoRouter, ProviderConfig
+from openkreflux.router import KrefluxRouter, ProviderConfig
 from openkreflux.verifier import LadderLevel, ReasoningVerifier
 
 console = Console()
@@ -206,7 +206,7 @@ def benchmark(model: str, provider: str, prompt: Optional[str], iterations: int)
                 return httpx.Response(200, content=content)
 
         client = httpx.Client(transport=httpx.MockTransport(mock_handler))
-        router = FlukoRouter(client=client)
+        router = KrefluxRouter(client=client)
         p1 = ProviderConfig(name="featherless", base_url="http://mock-featherless/v1", priority=1)
         p2 = ProviderConfig(name="openrouter", base_url="http://mock-openrouter/v1", priority=2)
         router.register_provider(p1)
@@ -237,7 +237,7 @@ def benchmark(model: str, provider: str, prompt: Optional[str], iterations: int)
         )
         sys.exit(1)
 
-    router = FlukoRouter.create_default(**{f"{provider}_key": api_key})
+    router = KrefluxRouter.create_default(**{f"{provider}_key": api_key})
     bench = InferenceBenchmark(router)
 
     prompts = [prompt] if prompt else None

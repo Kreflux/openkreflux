@@ -17,7 +17,7 @@ from typing import Any, Callable, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
-from openkreflux.router import FlukoRouter, ProviderConfig, StreamChunk
+from openkreflux.router import KrefluxRouter, ProviderConfig, StreamChunk
 
 
 class BenchmarkMetric(BaseModel):
@@ -63,7 +63,7 @@ DEFAULT_BENCHMARK_PROMPTS = [
 class InferenceBenchmark:
     """Benchmark suite runner for testing inference latency and provider resilience."""
 
-    def __init__(self, router: FlukoRouter):
+    def __init__(self, router: KrefluxRouter):
         self.router = router
 
     def run_stream_benchmark(

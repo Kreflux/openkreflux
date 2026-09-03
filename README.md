@@ -6,7 +6,7 @@
 
 **OpenKreflux** is the core open-source Python research & inference toolkit powering **[Kreflux](https://kreflux.ai)**.
 
-It provides a production-grade, fault-tolerant inference engine featuring **Fluko's Resilient Multi-Provider Router** (Featherless, Neokens, OpenRouter) with dropped-stream failover resumption, an automated **Reasoning Trace Verifier**, **Reasoning Ladder Scoring** (Low → Ultra), and an **Inference Benchmarking Suite**.
+It provides a production-grade, fault-tolerant inference engine featuring **Kreflux's Resilient Multi-Provider Router** (Featherless, Neokens, OpenRouter) with dropped-stream failover resumption, an automated **Reasoning Trace Verifier**, **Reasoning Ladder Scoring** (Low → Ultra), and an **Inference Benchmarking Suite**.
 
 ---
 
@@ -19,7 +19,7 @@ flowchart TD
     end
 
     subgraph OpenKrefluxEngine ["OpenKreflux Engine"]
-        Router["FlukoRouter<br/>EWMA Latency + Priority"]
+        Router["KrefluxRouter<br/>EWMA Latency + Priority"]
         Health["ProviderStatus<br/>Exponential Backoff"]
         StreamAgg["Streaming Aggregator<br/>Dropout Detector & Resumption"]
         Verifier["ReasoningVerifier<br/>Thought Parser & Math / AST Validator"]
@@ -51,7 +51,7 @@ flowchart TD
 
 ## Key Features
 
-1. **Fluko Resilient Multi-Provider Routing**:
+1. **Kreflux Resilient Multi-Provider Routing**:
    - Priority-based and latency-weighted (EWMA) dispatch.
    - Dynamic capacity error classification (`429`, `503`, concurrency limit bodies).
    - Adaptive exponential backoff preventing cascading provider outages.
@@ -103,10 +103,10 @@ uv pip install -e ".[dev]"
 ### 1. Resilient Multi-Provider Completion
 
 ```python
-from openkreflux import FlukoRouter, ProviderConfig
+from openkreflux import KrefluxRouter, ProviderConfig
 
 # Initialize router with fallback providers
-router = FlukoRouter([
+router = KrefluxRouter([
     ProviderConfig(
         name="featherless",
         base_url="https://api.featherless.ai/v1",

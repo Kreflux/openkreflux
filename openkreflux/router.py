@@ -1,5 +1,5 @@
 """
-OpenKreflux Resilient Multi-Provider Inference Router (Fluko).
+OpenKreflux Resilient Multi-Provider Inference Router (Kreflux).
 
 Features:
 - Provider definitions (endpoints, credentials, models, priority, timeouts).
@@ -150,7 +150,7 @@ def is_provider_capacity_failure(status_code: int, response_body: str) -> bool:
 
 
 def parse_sse_line(line: str) -> Optional[Dict[str, Any]]:
-    """Parse standard OpenAI/Fluko SSE data line."""
+    """Parse standard OpenAI/Kreflux SSE data line."""
     clean = line.strip()
     if not clean.startswith("data:"):
         return None
@@ -163,7 +163,7 @@ def parse_sse_line(line: str) -> Optional[Dict[str, Any]]:
         return None
 
 
-class FlukoRouter:
+class KrefluxRouter:
     """
     Production-grade resilient multi-provider router.
 
@@ -197,7 +197,7 @@ class FlukoRouter:
         featherless_key: Optional[str] = None,
         neokens_key: Optional[str] = None,
         openrouter_key: Optional[str] = None,
-    ) -> FlukoRouter:
+    ) -> KrefluxRouter:
         """Create standard router pre-configured with Featherless, Neokens, and OpenRouter."""
         configs = [
             ProviderConfig(
@@ -289,7 +289,7 @@ class FlukoRouter:
         ordered_providers = self.get_ordered_providers(requested_model=model)
 
         if not ordered_providers:
-            raise RouterError("No providers registered in FlukoRouter")
+            raise RouterError("No providers registered in KrefluxRouter")
 
         client = self._get_http_client()
         owns_client = self._client is None
@@ -395,7 +395,7 @@ class FlukoRouter:
         ordered_providers = self.get_ordered_providers(requested_model=model)
 
         if not ordered_providers:
-            raise RouterError("No providers registered in FlukoRouter")
+            raise RouterError("No providers registered in KrefluxRouter")
 
         client = self._get_async_http_client()
         owns_client = self._async_client is None
@@ -493,7 +493,7 @@ class FlukoRouter:
         """
         ordered_providers = self.get_ordered_providers(requested_model=model)
         if not ordered_providers:
-            raise RouterError("No providers registered in FlukoRouter")
+            raise RouterError("No providers registered in KrefluxRouter")
 
         client = self._get_http_client()
         owns_client = self._client is None
@@ -663,7 +663,7 @@ class FlukoRouter:
         """
         ordered_providers = self.get_ordered_providers(requested_model=model)
         if not ordered_providers:
-            raise RouterError("No providers registered in FlukoRouter")
+            raise RouterError("No providers registered in KrefluxRouter")
 
         client = self._get_async_http_client()
         owns_client = self._async_client is None

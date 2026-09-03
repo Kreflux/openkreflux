@@ -1,5 +1,5 @@
 """
-Unit tests for FlukoRouter: failover, health tracking, and stream resumption.
+Unit tests for KrefluxRouter: failover, health tracking, and stream resumption.
 """
 
 import json
@@ -9,7 +9,7 @@ import httpx
 
 from openkreflux.router import (
     AllProvidersFailedError,
-    FlukoRouter,
+    KrefluxRouter,
     ProviderConfig,
     ProviderStatus,
     StreamChunk,
@@ -64,7 +64,7 @@ def test_provider_status_health_and_backoff():
 
 
 def test_provider_ordering_priority_and_health():
-    router = FlukoRouter()
+    router = KrefluxRouter()
     p1 = ProviderConfig(name="primary", base_url="http://p1", priority=1)
     p2 = ProviderConfig(name="secondary", base_url="http://p2", priority=2)
     p3 = ProviderConfig(name="tertiary", base_url="http://p3", priority=3)
@@ -128,7 +128,7 @@ def test_router_complete_fallback():
         return httpx.Response(404)
 
     client = httpx.Client(transport=httpx.MockTransport(handler))
-    router = FlukoRouter(client=client)
+    router = KrefluxRouter(client=client)
 
     p1 = ProviderConfig(name="primary", base_url="http://primary/v1", priority=1)
     p2 = ProviderConfig(name="secondary", base_url="http://secondary/v1", priority=2)
@@ -152,7 +152,7 @@ def test_router_all_providers_failed():
         return httpx.Response(503, text="Service Unavailable")
 
     client = httpx.Client(transport=httpx.MockTransport(handler))
-    router = FlukoRouter(client=client)
+    router = KrefluxRouter(client=client)
     router.register_provider(ProviderConfig(name="p1", base_url="http://p1/v1", priority=1))
 
     with pytest.raises(AllProvidersFailedError) as exc_info:
@@ -192,7 +192,7 @@ def test_router_streaming_and_failover_resumption():
         return httpx.Response(404)
 
     client = httpx.Client(transport=httpx.MockTransport(handler))
-    router = FlukoRouter(client=client)
+    router = KrefluxRouter(client=client)
 
     p1 = ProviderConfig(name="primary", base_url="http://primary/v1", priority=1)
     p2 = ProviderConfig(name="secondary", base_url="http://secondary/v1", priority=2)

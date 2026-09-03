@@ -7,10 +7,10 @@ import pytest
 from typing import Iterator
 
 from openkreflux.benchmark import BenchmarkMetric, BenchmarkReport, InferenceBenchmark
-from openkreflux.router import FlukoRouter, ProviderConfig, StreamChunk
+from openkreflux.router import KrefluxRouter, ProviderConfig, StreamChunk
 
 
-class MockStreamRouter(FlukoRouter):
+class MockStreamRouter(KrefluxRouter):
     """Synthetic router that yields controlled chunks for benchmark testing."""
 
     def __init__(self, with_failover: bool = False):

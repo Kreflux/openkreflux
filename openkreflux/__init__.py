@@ -2,7 +2,7 @@
 OpenKreflux: Flagship Open-Source Python Research & Inference Toolkit for Kreflux.
 
 Provides:
-- FlukoRouter: Resilient multi-provider routing with automatic failover and stream resumption.
+- KrefluxRouter: Resilient multi-provider routing with automatic failover and stream resumption.
 - ReasoningVerifier: Trace verification for <think> tags, math/code validity, and coherence.
 - ReasoningLadder: Depth standards and evaluation across Low, Medium, High, and Ultra.
 - InferenceBenchmark: Metrics suite measuring TTFT, TPS, reasoning density, and failover latency.
@@ -14,7 +14,7 @@ from openkreflux.benchmark import BenchmarkMetric, BenchmarkReport, InferenceBen
 from openkreflux.router import (
     AllProvidersFailedError,
     CompletionResponse,
-    FlukoRouter,
+    KrefluxRouter,
     ProviderCapacityError,
     ProviderConfig,
     ProviderStatus,
@@ -32,7 +32,7 @@ __version__ = "0.1.0"
 
 __all__ = [
     "__version__",
-    "FlukoRouter",
+    "KrefluxRouter",
     "ProviderConfig",
     "ProviderStatus",
     "CompletionResponse",
