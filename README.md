@@ -19,28 +19,30 @@ flowchart TD
     end
 
     subgraph OpenKrefluxEngine ["OpenKreflux Engine"]
-        Router["FlukoRouter<br/>(EWMA Latency + Priority)"]
-        Health["ProviderStatus<br/>(Exponential Backoff)"]
-        StreamAgg["Streaming Aggregator<br/>(Dropout Detector & Resumption)"]
-        Verifier["ReasoningVerifier<br/>(<think> Parser & AST / Math Validator)"]
-        Ladder["ReasoningLadder<br/>(Low | Medium | High | Ultra)"]
+        Router["FlukoRouter<br/>EWMA Latency + Priority"]
+        Health["ProviderStatus<br/>Exponential Backoff"]
+        StreamAgg["Streaming Aggregator<br/>Dropout Detector & Resumption"]
+        Verifier["ReasoningVerifier<br/>Thought Parser & Math / AST Validator"]
+        Ladder["ReasoningLadder<br/>Low | Medium | High | Ultra"]
     end
 
     subgraph Providers ["Upstream Inference Providers"]
-        P1["Featherless AI<br/>(Primary Low-Latency)"]
-        P2["OpenRouter<br/>(Frontier Failover)"]
-        P3["Neokens<br/>(High-Headroom Gateway)"]
+        P1["Featherless AI<br/>Primary Low-Latency"]
+        P2["OpenRouter<br/>Frontier Failover"]
+        P3["Neokens<br/>High-Headroom Gateway"]
     end
 
     UserReq --> Router
     Router <--> Health
     Router --> P1
-    P1 -.->|Capacity / Dropout (429/503)| Router
+    P1 -.->|"Capacity / Dropout (429/503)"| Router
     Router --> P2
-    P2 -.->|Failover| Router
+    P2 -.->|"Failover"| Router
     Router --> P3
     
-    P1 & P2 & P3 --> StreamAgg
+    P1 --> StreamAgg
+    P2 --> StreamAgg
+    P3 --> StreamAgg
     StreamAgg --> Verifier
     Verifier --> Ladder
 ```
