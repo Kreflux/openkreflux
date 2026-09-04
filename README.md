@@ -13,39 +13,41 @@ It provides a production-grade, fault-tolerant inference engine featuring **Kref
 
 ## Architecture Overview
 
-```mermaid
-flowchart TD
-    subgraph Client ["Client Application / CLI"]
-        UserReq["User Prompt / Context"]
-    end
-
-    subgraph OpenKrefluxEngine ["OpenKreflux Engine"]
-        Router["KrefluxRouter<br/>EWMA Latency + Priority"]
-        Health["ProviderStatus<br/>Exponential Backoff"]
-        StreamAgg["Streaming Aggregator<br/>Dropout Detector & Resumption"]
-        Verifier["ReasoningVerifier<br/>Thought Parser & Math / AST Validator"]
-        Ladder["ReasoningLadder<br/>Low | Medium | High | Ultra"]
-    end
-
-    subgraph Providers ["Upstream Inference Providers"]
-        P1["Featherless AI<br/>Primary Low-Latency"]
-        P2["OpenRouter<br/>Frontier Failover"]
-        P3["Neokens<br/>High-Headroom Gateway"]
-    end
-
-    UserReq --> Router
-    Router <--> Health
-    Router --> P1
-    P1 -.->|"Capacity / Dropout (429/503)"| Router
-    Router --> P2
-    P2 -.->|"Failover"| Router
-    Router --> P3
-    
-    P1 --> StreamAgg
-    P2 --> StreamAgg
-    P3 --> StreamAgg
-    StreamAgg --> Verifier
-    Verifier --> Ladder
+```text
+┌──────────────────────────────────────────────────────────┐
+│                 Client Application / CLI                 │
+│                  User Prompt / Context                   │
+└────────────────────────────┬─────────────────────────────┘
+                             │
+                             ▼
+┌──────────────────────────────────────────────────────────┐
+│                   OpenKreflux Engine                     │
+│  ┌────────────────────────────────────────────────────┐  │
+│  │    KrefluxRouter (EWMA Latency + Priority)         │  │
+│  └─────────────┬────────────────────────┬─────────────┘  │
+│                │                        │                │
+│                ▼                        ▼                │
+│     Provider Health & Backoff   Streaming Resumption     │
+│     (Dynamic 429/503 Recovery)  (Dropout Handoff)        │
+│                                         │                │
+│                                         ▼                │
+│                                 ReasoningVerifier        │
+│                                 (Syntax, AST & CoT)      │
+│                                         │                │
+│                                         ▼                │
+│                                 ReasoningLadder          │
+│                                 (Low -> Medium -> Ultra) │
+└────────────────┼─────────────────────────────────────────┘
+                 │
+   Failover Loop │
+                 ▼
+┌──────────────────────────────────────────────────────────┐
+│               Upstream Inference Providers               │
+│   ┌──────────────────┐ ┌────────────┐ ┌──────────────┐   │
+│   │  Featherless AI  │ │ OpenRouter │ │   Neokens    │   │
+│   │  (Primary Fast)  │ │ (Failover) │ │  (Failover)  │   │
+│   └──────────────────┘ └────────────┘ └──────────────┘   │
+└──────────────────────────────────────────────────────────┘
 ```
 
 ---

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "openkreflux"
-version = "0.1.0"
+version = "0.1.1"
 description = "Production-grade open-source reasoning verifier and resilient multi-provider inference engine for Kreflux"
 readme = "README.md"
 requires-python = ">=3.10"
