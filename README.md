@@ -198,7 +198,7 @@ Example output:
 │ Thinking Tokens          │ 612                       │
 │ Solution Tokens          │ 145                       │
 │ Total Tokens             │ 757                       │
-│ Reasoning Density        │ 80.8% (████████████████░░░) │
+│ Reasoning Density        │ 80.8%                     │
 │ Coherence Score          │ 0.85 / 1.00               │
 │ Self-Correction Detected │ Yes                       │
 │ Math Syntax & Delimiters │ Valid                     │
