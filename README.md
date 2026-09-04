@@ -1,8 +1,9 @@
 # OpenKreflux
 
+[![PyPI](https://img.shields.io/pypi/v/openkreflux.svg)](https://pypi.org/project/openkreflux/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/downloads/)
-[![Version](https://img.shields.io/badge/version-0.1.0-green.svg)](https://github.com/Kreflux/openkreflux)
+[![Downloads](https://img.shields.io/pypi/dm/openkreflux.svg)](https://pypi.org/project/openkreflux/)
 
 **OpenKreflux** is the core open-source Python research & inference toolkit powering **[Kreflux](https://kreflux.com)**.
 
