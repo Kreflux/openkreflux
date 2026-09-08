@@ -4,6 +4,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/downloads/)
 [![Downloads](https://img.shields.io/pypi/dm/openkreflux.svg)](https://pypi.org/project/openkreflux/)
+[![Discord](https://img.shields.io/discord/1546742017856376842?color=5865F2&logo=discord&logoColor=white&label=Discord)](https://discord.gg/q9bmfQybn8)
 
 **OpenKreflux** is the core open-source Python research & inference toolkit powering **[Kreflux](https://kreflux.com)**.
 
@@ -239,6 +240,13 @@ uv run pytest -v
 ## Contributing
 
 Contributions are welcome! Please open an issue or pull request at [Kreflux/openkreflux](https://github.com/Kreflux/openkreflux).
+
+## Community
+
+Join our growing community of AI engineers, researchers, and builders:
+- 💬 **Discord**: [Join the Kreflux Discord](https://discord.gg/q9bmfQybn8)
+- 🌐 **Web Platform**: [kreflux.com](https://kreflux.com)
+- 🤗 **Hugging Face**: [huggingface.co/Kreflux-AI](https://huggingface.co/Kreflux-AI)
 
 ## License
 
