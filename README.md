@@ -1,7 +1,11 @@
 # OpenKreflux
 
+<p align="center">
+  <img src="openkreflux_banner.png" alt="OpenKreflux Banner" width="100%" style="border-radius: 24px; overflow: hidden;" />
+</p>
+
 [![PyPI](https://img.shields.io/pypi/v/openkreflux.svg)](https://pypi.org/project/openkreflux/)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-Kreflux_Non--Commercial-blue.svg)](LICENSE)
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/downloads/)
 [![Downloads](https://img.shields.io/pypi/dm/openkreflux.svg)](https://pypi.org/project/openkreflux/)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Us-5865F2?logo=discord&logoColor=white)](https://discord.gg/q9bmfQybn8)
@@ -250,4 +254,9 @@ Join our growing community of AI engineers, researchers, and builders:
 
 ## License
 
-OpenKreflux is licensed under the [Apache 2.0 License](LICENSE).
+OpenKreflux is licensed under the **Kreflux Community Non-Commercial License 1.0**. See the [LICENSE](LICENSE) file for complete details.
+
+### Key Provisions:
+* **Non-Commercial Use Only**: Permitted solely for academic research, personal experimentation, and non-monetized evaluation. Commercial hosting, SaaS deployment, or revenue generation is strictly prohibited without a separate commercial license from Kreflux.
+* **Alignment Integrity (No Abliteration / No Jailbreaking)**: Modification, fine-tuning, or steering intended to weaken, bypass, or abliterate safety boundaries, refusal mechanisms, or guardrails is strictly prohibited. Generating automated jailbreaks or adversarial injection payloads is strictly prohibited.
+* **Attribution**: Retain all copyright notices and credit Kreflux (https://kreflux.com) as the author.
