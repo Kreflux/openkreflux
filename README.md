@@ -10,13 +10,13 @@
 [![Downloads](https://img.shields.io/pypi/dm/openkreflux.svg)](https://pypi.org/project/openkreflux/)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Us-5865F2?logo=discord&logoColor=white)](https://discord.gg/q9bmfQybn8)
 
-**OpenKreflux** is the core open-source Python research & inference toolkit powering **[Kreflux](https://kreflux.com)**.
+**[Kreflux](https://kreflux.com)** is an independent AI lab researching adaptive reasoning models. **OpenKreflux** is the lab's public Python toolkit for running and evaluating reasoning experiments.
 
-It provides a production-grade, fault-tolerant inference engine featuring **Kreflux's Resilient Multi-Provider Router** (Featherless, Neokens, OpenRouter) with dropped-stream failover resumption, an automated **Reasoning Trace Verifier**, **Reasoning Ladder Scoring** (Low → Ultra), and an **Inference Benchmarking Suite**.
+The toolkit includes reasoning trace checks, effort-level scoring, and inference benchmarks. It also provides provider failover and streaming resumption for experiments that use external inference backends. The architecture and examples below describe the standalone toolkit.
 
 ---
 
-## Architecture Overview
+## Toolkit Architecture
 
 ```text
 ┌──────────────────────────────────────────────────────────┐
